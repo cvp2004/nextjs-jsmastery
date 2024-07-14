@@ -4,6 +4,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 [`JavaScript Mastery`](https://youtu.be/wm5gMKuwSYk?si=T9jBTwK9NzBHGhU2)
 
+## Github Gist Link
+
+[`Gist Link`](https://gist.github.com/adrianhajdin/6df61c6cd5ed052dce814a765bff9032)
+
 ## Getting Started
 
 First, run the development server:

@@ -1,3 +1,5 @@
+import Feed from "@components/Feed";
+
 const Home = () => {
     return (
         <section className="w-full flex-center flex-col">
@@ -5,10 +7,13 @@ const Home = () => {
                 Discover & Share
                 <br className="max-md:hidden" />
                 <span className="orange_gradient text-center">AI Powered Prompts</span>
-                <p className="desc text-center">
-                    Promptia is an Open-Source AI Prompting Tool for Modern World to Discover, Create and Share Creative Prompts.
-                </p>
             </h1>
+
+            <p className="desc text-center">
+                Promptia is an Open-Source AI Prompting Tool for Modern World to Discover, Create and Share Creative Prompts.
+            </p>
+
+            <Feed />
         </section>
     )
 }
