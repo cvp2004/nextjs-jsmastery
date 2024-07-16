@@ -8,19 +8,18 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 const Nav = () => {
     const { data: session } = useSession();
 
+    console.log(session);
+
     const [providers, setProviders] = useState(null);
     const [toggleDropDown, setToggleDropDown] = useState(false);
 
     useEffect(() => {
         const setUpProviders = async () => {
             const response = await getProviders();
-            console.log(response);
             setProviders(response);
         };
         setUpProviders();
     }, []);
-
-    console.log("session =", session);
 
     return (
         <nav className="flex text-center w-full mg-16 pt-3">
@@ -37,43 +36,46 @@ const Nav = () => {
 
             {/* Desktop navigation */}
             <div className="sm:flex hidden ml-auto">
-                {session?.user ? (
-                    <div className="flex gap-3 md:gap-3">
-                        <Link href="/create-prompt" className="black_btn justify-end">
-                            Create Prompt
-                        </Link>
+                {
+                    session?.user ? (
+                        <div className="flex gap-3 md:gap-3">
+                            <Link href="/create-prompt" className="black_btn justify-end">
+                                Create Prompt
+                            </Link>
 
-                        <button type="button" onClick={signOut} className="outline_btn">
-                            Sign Out
-                        </button>
+                            <button type="button" onClick={signOut} className="outline_btn">
+                                Sign Out
+                            </button>
 
-                        <Link href="/profile">
-                            <Image
-                                src={session.user.image}
-                                width={37}
-                                height={37}
-                                className="rounded-full"
-                                alt="profile"
-                            />
-                        </Link>
-                    </div>
-                ) : (
-                    <section>
-                        {providers &&
-                            Object.values(providers).map((provider) => (
-                                <button
-                                    type="button"
-                                    key={provider.name}
-                                    onClick={() => signIn(provider.id)}
-                                    className="black_btn"
-                                >
-                                    Sign In
-                                </button>
-                            ))}
-                    </section>
-                )}
+                            <Link href="/profile">
+                                <Image
+                                    src={session.user.image}
+                                    width={37}
+                                    height={37}
+                                    className="rounded-full"
+                                    alt="profile"
+                                />
+                            </Link>
+                        </div>
+                    ) : (
+                        <section>
+                            {providers &&
+                                Object.values(providers).map((provider) => (
+                                    <button
+                                        type="button"
+                                        key={provider.name}
+                                        onClick={() => signIn(provider.id)}
+                                        className="black_btn"
+                                    >
+                                        Sign In
+                                    </button>
+                                ))}
+                        </section>
+                    )
+                }
             </div>
 
+            {/* Mobile navigation */}
             <div className="sm:hidden flex relative ml-auto">
                 {session?.user ? (
                     <div>
